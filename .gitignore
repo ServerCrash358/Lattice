@@ -1,0 +1,19 @@
+build/
+*.o
+*.obj
+.cache/
+compile_commands.json
+bench/data/*
+!bench/data/.gitkeep
+vcpkg_installed/
+bench/.venv/
+
+build*/
+*.out
+.vscode/
+.idea/
+
+# Internal planning/spec and assistant config: kept locally, not published
+spec/
+.claude/
+CLAUDE.md

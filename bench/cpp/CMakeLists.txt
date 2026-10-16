@@ -1,0 +1,31 @@
+add_executable(bench_vamana_sift bench_vamana_sift.cpp)
+target_link_libraries(bench_vamana_sift PRIVATE lattice_index_graph lattice_quant)
+
+add_executable(bench_filtered_recall_10m bench_filtered_recall_10m.cpp)
+target_link_libraries(bench_filtered_recall_10m PRIVATE lattice_segment)
+
+add_executable(bench_rabitq_real_data bench_rabitq_real_data.cpp)
+target_link_libraries(bench_rabitq_real_data PRIVATE lattice_quant)
+
+add_executable(bench_codes_microbench bench_codes_microbench.cpp)
+target_link_libraries(bench_codes_microbench PRIVATE lattice_quant)
+
+add_executable(bench_disk_parity_sift1m bench_disk_parity_sift1m.cpp)
+target_link_libraries(bench_disk_parity_sift1m PRIVATE lattice_segment)
+
+
+add_executable(bench_rabitq_estimator_diagnostic bench_rabitq_estimator_diagnostic.cpp)
+target_link_libraries(bench_rabitq_estimator_diagnostic PRIVATE lattice_quant)
+
+add_executable(bench_sq8_sift1m_recall bench_sq8_sift1m_recall.cpp)
+target_include_directories(bench_sq8_sift1m_recall PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(bench_sq8_sift1m_recall PRIVATE lattice_index_graph lattice_quant lattice_kernels)
+
+add_executable(bench_production_sift1m bench_production_sift1m.cpp)
+target_link_libraries(bench_production_sift1m PRIVATE lattice_segment lattice_quant)
+
+add_executable(bench_sq8_kernel bench_sq8_kernel.cpp)
+target_link_libraries(bench_sq8_kernel PRIVATE lattice_quant)
+
+add_executable(bench_filtered_sift1m bench_filtered_sift1m.cpp)
+target_link_libraries(bench_filtered_sift1m PRIVATE lattice_segment lattice_kernels)

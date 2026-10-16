@@ -1,0 +1,2 @@
+add_executable(example_quickstart quickstart.cpp)
+target_link_libraries(example_quickstart PRIVATE lattice_segment lattice_quant)

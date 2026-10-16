@@ -1,0 +1,13 @@
+# Phase 0 benchmark harness dependencies (D-ARCH-13's WSL2 Python stack, D-CPP-06 finding 33)
+sentence-transformers>=3.0,<4.0  # sentence-transformers>=6.0 requires transformers>=5.0,
+                                  # which breaks nomic-embed-text-v1.5's custom modeling
+                                  # code (calls get_extended_attention_mask, removed in
+                                  # transformers 5.x) -- pinned to the last compatible era
+transformers>=4.40,<5.0
+h5py>=3.11
+numpy>=1.26
+scikit-learn>=1.5
+hnswlib>=0.8
+beir>=2.0
+huggingface_hub>=0.24
+einops>=0.7  # required by nomic-embed-text-v1.5's custom HF modeling code (D-VEC-07)

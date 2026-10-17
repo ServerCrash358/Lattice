@@ -2,7 +2,7 @@
 
 # Lattice
 
-**A disk-resident vector index in C++ — graph-based ANN search that keeps only 8-bit codes in RAM.**
+**A disk-resident vector index in C++, graph-based ANN search that keeps only 8-bit codes in RAM.**
 
 ![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue) ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) ![Linux / WSL2](https://img.shields.io/badge/platform-Linux%20%7C%20WSL2-lightgrey) ![Validated on SIFT1M](https://img.shields.io/badge/validated-real%20SIFT1M-success)
 

@@ -17,3 +17,12 @@ build*/
 spec/
 .claude/
 CLAUDE.md
+
+# Local tooling, not published
+logs/
+bench/vectordbbench/
+*.egg-info/
+dist/
+wheelhouse/
+__pycache__/
+*.pyc

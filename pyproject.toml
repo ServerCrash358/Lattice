@@ -1,0 +1,38 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "lattice-vdb"
+version = "0.2.0"
+description = "Disk-resident vector index: Vamana graph, SQ8 codes, zero-copy mmap storage"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "click>=8.0"]
+keywords = ["vector database", "ann", "nearest neighbor", "diskann", "vamana", "embeddings"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: C++",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Database",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+hdf5 = ["h5py>=3.8"]
+test = ["pytest>=7", "h5py>=3.8"]
+
+[project.scripts]
+lattice = "lattice_vdb.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ServerCrash358/Lattice"
+Benchmarks = "https://github.com/ServerCrash358/Lattice/blob/main/docs/BENCHMARKS.md"
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+cmake.args = ["-DLATTICE_BUILD_PYTHON=ON", "-DLATTICE_PYTHON_ONLY=ON"]
+wheel.packages = ["python/lattice_vdb"]
+sdist.exclude = ["bench/data", "build", "spec", "logs", "bench/vectordbbench"]

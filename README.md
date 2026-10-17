@@ -32,7 +32,25 @@ Measured on a laptop (Ryzen 7, 16 threads, WSL2) with the ANN-Benchmarks protoco
 - **Filtering that actually keeps recall.** A filter-aware planner scans small match sets directly and widens the graph search for large ones — unfiltered-traversal-plus-post-filter collapses to recall 0.02–0.17 at 0.1–1% selectivity; this holds ≈ 1.0.
 - **Built on real-data evidence.** Every claim here was measured on real datasets, not synthetic ones — and the real-data runs found bugs synthetic data hid (see [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md#6-what-changed-along-the-way-why-the-numbers-moved)).
 
-## Quick start
+## Python package
+
+```bash
+pip install lattice-vdb            # Linux x86_64, Python 3.10+
+lattice fetch sift1m
+lattice build ~/.lattice/data/sift-128-euclidean.hdf5 sift.lattice
+lattice bench sift.lattice ~/.lattice/data/sift-128-euclidean.hdf5 ~/.lattice/data/sift-128-euclidean.hdf5 --ef 32,64,128
+```
+
+```python
+import lattice_vdb
+lattice_vdb.build_index(vectors, "my.lattice", metric="cosine")   # l2, ip or cosine
+index = lattice_vdb.Index("my.lattice", preload=True)
+ids = index.search(query, k=10, ef_search=64)
+```
+
+`lattice --help` lists the commands: `build`, `search`, `info`, `verify`, `bench`, `fetch`.
+
+## Quick start (C++)
 
 ```bash
 # Debian/Ubuntu prerequisites (system packages)
@@ -40,7 +58,7 @@ sudo apt install librocksdb-dev liburing-dev libroaring-dev
 
 git clone <repo-url> && cd lattice
 cmake --preset release && cmake --build build/release -j$(nproc)
-ctest --test-dir build/release          # 86 tests
+ctest --test-dir build/release          # 108 tests
 ./build/release/examples/example_quickstart
 ```
 

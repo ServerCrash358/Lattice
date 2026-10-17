@@ -4,7 +4,7 @@
 
 **A disk-resident vector index in C++, graph-based ANN search that keeps only 8-bit codes in RAM.**
 
-![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue) ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) ![Linux / WSL2](https://img.shields.io/badge/platform-Linux%20%7C%20WSL2-lightgrey) ![Validated on SIFT1M](https://img.shields.io/badge/validated-real%20SIFT1M-success)
+[![PyPI](https://img.shields.io/pypi/v/lattice-vdb)](https://pypi.org/project/lattice-vdb/) ![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue) ![C++23](https://img.shields.io/badge/C%2B%2B-23-blue) ![Linux / WSL2](https://img.shields.io/badge/platform-Linux%20%7C%20WSL2-lightgrey) ![Validated on SIFT1M](https://img.shields.io/badge/validated-real%20SIFT1M-success)
 
 [Quick start](#quick-start) · [Performance](#performance) · [How it works](#how-it-works) · [Filtered search](#filtered-search) · [Limitations](#limitations) · [Docs](#documentation)
 
@@ -35,7 +35,7 @@ Measured on a laptop (Ryzen 7, 16 threads, WSL2) with the ANN-Benchmarks protoco
 ## Python package
 
 ```bash
-pip install lattice-vdb            # Linux x86_64, Python 3.10+
+pip install lattice-vdb            # prebuilt wheels: Linux x86_64, Python 3.10-3.13
 lattice fetch sift1m
 lattice build ~/.lattice/data/sift-128-euclidean.hdf5 sift.lattice
 lattice bench sift.lattice ~/.lattice/data/sift-128-euclidean.hdf5 ~/.lattice/data/sift-128-euclidean.hdf5 --ef 32,64,128
@@ -197,7 +197,9 @@ Being straight about what this is and isn't:
 | 7. Grouped top-k never under-fills | ✅ |
 | 8. RaBitQ functional correctness + RAM budget | ✅ |
 
-Modules built (8 of the 13 in the full plan): `common`, `kernels`, `quant`, `index_flat`, `index_graph`, `filter`, `storage`, `segment`. Not built (future scope): `index_ivf`, `lexical`, `fusion`, `query`, `api`, `server`, `pybind`.
+Python package: [`lattice-vdb`](https://pypi.org/project/lattice-vdb/) on PyPI (build/search API and the `lattice` CLI), released from tags by `.github/workflows/wheels.yml`.
+
+Modules built (8 of the 13 in the full plan): `common`, `kernels`, `quant`, `index_flat`, `index_graph`, `filter`, `storage`, `segment`. Not built (future scope): `index_ivf`, `lexical`, `fusion`, `query`, `api`, `server` (the `pybind` module is partly covered by `lattice-vdb`).
 </details>
 
 ## Documentation
